@@ -1,0 +1,22 @@
+{% extends "head.html" %}
+{% block content %}
+    <a href='/' class="w3-btn w3-left w3-white w3-border">Back to Main Menu</a>
+    {% if company.user_id == log_sess['user_id'] %}
+        <a href='{{url_for('CreateModel',c_id=company.id)}}' class="w3-btn w3-right w3-white w3-border">Add New Model</a>
+    {% endif %}
+    <div class="w3-row">
+        <div style="margin:0 0 0 25%;padding:2% 0 0 3%;width:30%" class=" w3-twothird">
+            <h1 style="text-align: center">{{company.name}}</h1>
+            <ul class="w3-ul w3-container">
+                <h5>Models</h5>
+                    {% for model in models %}
+                        <li>{{model.name}}
+                            <a href="{{url_for("viewModel",c_id=company.id,model_id=model.id)}}" class=" w3-transparent w3-right">
+                             <i class="fa fa-arrow-right"></i>
+                            </a>
+                        </li>
+                    {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

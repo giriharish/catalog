@@ -1,0 +1,29 @@
+{% extends "head.html" %}
+ {% block content %}
+ <a href="{{url_for("showCompanyModels",c_id=comp.id)}}"class="w3-button w3-transparent w3-left"><i class="fa fa-arrow-left"></i></a>
+<a class="w3-button w3-transparent w3-left" href="/"><i class="fa fa-home"></i></a><br>
+{% if log_sess['user_id'] == comp.user_id %}
+<form action="{{url_for("CreateModel",c_id=comp.id)}}" class="w3-container" style="width: 45%;margin-left:25% " method="post">
+    <h3>Add new Model to {{comp.name}}</h3>
+    <label for="">Model Name</label>
+    <input class="w3-input" type="text" name="Mname" required>
+    <label for="">Price</label>
+    <input class="w3-input" type="text" name="mprice" required>
+    <label for="">Image url</label>
+    <input class="w3-input" type="text" name="mimage" required>
+    <label for="">CC</label>
+    <input class="w3-input" type="number" name="cc" required>
+    <label for="">Launch year</label>
+    <input class="w3-input" type="number" name="myear" required>
+    <label for="">Colors</label>
+    <input class="w3-input" type="text" name="mcolors" required>
+    <label for="">Description</label>
+    <textarea name="description" class="w3-input" required cols="20" rows="3"></textarea>
+    <input type="submit" value="Add">
+</form>
+{%elif log_sess['user_id']%}
+    <p>You are not allowed for this operation</p>
+{%else%}
+    <p>Login to delete model</p>
+{% endif %}
+{% endblock %}

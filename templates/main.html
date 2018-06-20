@@ -1,0 +1,33 @@
+{% extends "head.html" %}
+{% block content %}
+{% if log_sess['user_id'] %}
+    <a href='/company/new' class="w3-btn w3-right w3-white w3-border">Add New Company</a>
+{% endif %}
+<div class="w3-row ">
+    <ul class="w3-ul w3-container w3-half w3-card-4">
+        <li>
+            <h2>Companies</h2>
+        </li>
+        {% for c in companies %}
+        <li class="w3-display-container">
+            <a href="{{url_for("showCompanyModels",c_id=c.id)}}">{{c.name}}</a>
+            {% if log_sess['user_id'] == c.user_id %}
+            <a href="{{url_for("editCompany",c_id=c.id)}}" class="w3-button w3-transparent w3-display-right" style="right: 80px;">Edit</a>
+            <a href="{{url_for("deleteCompany",c_id=c.id)}}" class="w3-button w3-transparent w3-display-right">Delete</a>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+    <ul class="w3-ul w3-container w3-half w3-card-4">
+        <li>
+            <h2>Latest Cars:</h2>
+        </li>
+        {% for l in LModels %}
+        <li class="w3-display-container">
+            <a href="{{url_for("viewModel",c_id=l.company_id,model_id=l.id)}}">{{l.name}}</a><br> 
+        </li>
+        {% endfor %}
+    </ul>
+
+</div>
+{% endblock %}

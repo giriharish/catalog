@@ -1,0 +1,17 @@
+{% extends "head.html" %}
+ {% block content %}
+ <a href="{{url_for("viewModel",c_id=model.company_id,model_id=model.id)}}"class="w3-button w3-transparent w3-left"><i class="fa fa-arrow-left"></i></a>
+ <a class="w3-button w3-transparent w3-left" href="/"><i class="fa fa-home"></i></a><br>
+ <div class="w3-container">
+ {% if log_sess['user_id'] == model.user_id %}
+    <form action="{{url_for("deleteModel",c_id=model.company_id,model_id=model.id)}}" method="POST">
+        <p>Are you sure you want to delete this model</p>
+        <input type="submit" value="Delete">
+    </form>
+{%elif log_sess['user_id']%}
+    <p>You are not allowed for this operation</p>
+{%else%}
+    <p>Login to delete model</p>
+{% endif %}
+</div>
+ {% endblock %}

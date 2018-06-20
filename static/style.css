@@ -1,0 +1,46 @@
+body {
+    font-family: "Raleway", Arial, sans-serif;
+}
+
+.w3-row img {
+    margin-bottom: -8px
+}
+
+.w3-dropdown-content {
+    right: 20px;
+    font-size: 50%;
+    padding: 10%;
+}
+
+a {
+    text-decoration: none;
+}
+
+#profile {
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 150px;
+}
+
+.w3-half {
+    margin-top: 4%;
+}
+
+@media only screen and (min-width: 901px) {
+    .w3-half {
+        width: 45%;
+        margin: 2%;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width:900px) {
+    .w3-half {
+        width: 100%;
+        margin: 2%;
+    }
+    #sm {
+        left: 30px;
+    }
+}

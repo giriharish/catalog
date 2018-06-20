@@ -1,0 +1,28 @@
+{% extends "head.html" %}
+ {% block content %}
+ <a href="{{url_for("viewModel",c_id=model.company_id,model_id=model.id)}}"class="w3-button w3-transparent w3-left"><i class="fa fa-arrow-left"></i></a>
+ <a class="w3-button w3-transparent w3-left" href="/"><i class="fa fa-home"></i></a><br>
+ {% if log_sess['user_id'] == model.user_id %}
+    <form action="{{url_for("editModel",c_id=model.company_id,model_id=model.id)}}" class="w3-container" style="width: 45%;margin-left:25% " method="post">
+        <label for="">Model Name</label>
+        <input type="text" class="w3-input w3-border" name="Mname" id="" value="{{model.name}}" required>
+        <label for="">Price</label>
+        <input type="text" class="w3-input w3-border" name="mprice" id="" value="{{model.price}}" required>
+        <label for="">Image url</label>
+        <input type="text" class="w3-input w3-border" name="mimage" id="" value="{{model.image}}" required>
+        <label for="">CC</label>
+        <input type="number" class="w3-input w3-border" name="cc" id="" value="{{model.cc}}" required>
+        <label for="">Launch year</label>
+        <input type="number" class="w3-input w3-border" name="myear" id="" value="{{model.year}}" required>
+        <label for="">Colors</label>
+        <input type="text" class="w3-input w3-border" name="mcolors" id="" value="{{model.colors}}" required>
+        <label for="">Description</label>
+        <textarea name="description" class="w3-input w3-border"  id="" cols="30" rows="10">{{model.description}}</textarea>
+        <input type="submit" class="w3-button w3-green w3-right w3-border" value="Apply changes">
+    </form>
+{%elif log_sess['user_id']%}
+    <p>You are not allowed for this operation</p>
+{%else%}
+    <p>Login to delete model</p>
+{% endif %}
+{% endblock %}

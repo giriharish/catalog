@@ -1,0 +1,16 @@
+{% extends "head.html" %} 
+{% block content %}
+    <a class="w3-button w3-transparent w3-left" href="/">
+        <i class="fa fa-arrow-left"></i>
+    </a>
+    <br>
+    {% if log_sess['user_id']%}
+        <form method='POST' class="w3-container" style="width:30%" action="/company/new/">
+            <label for="new">Company Name:</label>
+            <input type="text" class="w3-input w3-border" name="cname" id="new">
+            <input type="submit" class="w3-button" value="Add">
+        </form>
+    {%else%}
+    <p>login to add a company</p>
+    {% endif%}
+{% endblock %}

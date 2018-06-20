@@ -1,0 +1,40 @@
+{% extends "head.html" %}
+{% block content %}
+<a href="{{url_for("showCompanyModels",c_id=model.company_id)}}"class="w3-button w3-transparent w3-left"><i class="fa fa-arrow-left"></i></a>
+<a class="w3-button w3-transparent w3-left" href="/"><i class="fa fa-home"></i></a><br>
+<div class="w3-container " style="width:550px;margin:0% 0 0 10% ;border: 1px solid #e6e6e6">
+    <img src="{{model.image}}" alt="car image" width="500px" height="auto">
+    {% if log_sess['user_id'] == model.user_id %}
+        <a href="{{url_for("deleteModel",c_id=model.company_id,model_id=model.id)}}" class="w3-button w3-red w3-right"><i class="fa fa-trash-o"></i>&nbsp;delete</a>
+        <a href="{{url_for("editModel",c_id=model.company_id,model_id=model.id)}}" class="w3-button w3-right w3-blue"><i class="fa fa-edit"></i>&nbsp;Edit</a>
+    {% endif%}
+    <table class="w3-table">
+        <tr>
+          <th>Model Name :</th>
+          <td>{{model.name}}</td>
+        </tr>
+        <tr>
+            <th>price:</th>
+            <td>{{model.price}}</td>
+          </tr>
+          <tr>
+            <th>Launch year :</th>
+            <td>{{model.year}}</td>
+          </tr>
+          <tr>
+            <th>cc:</th>
+            <td>{{model.cc}}</td>
+          </tr>
+          <tr>
+            <th>Colors:</th>
+            <td>{{model.colors}}</td>
+          </tr>
+          <tr>
+            <th>Description:</th>
+            <td>{{model.description}}</td>
+          </tr>
+        </table>
+</div>
+
+
+{% endblock %}

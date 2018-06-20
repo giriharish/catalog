@@ -1,0 +1,15 @@
+{% extends "head.html" %}
+ {% block content %}
+ <a href="/"class="w3-button w3-transparent w3-left"><i class="fa fa-arrow-left"></i></a>
+ {% if log_sess['user_id'] == comp.user_id %}
+ <div class="w3-container">
+    <form action="{{url_for("deleteCompany",c_id=comp.id)}}" method="post">
+        <h4>Are you sure u want to delete company {{comp.name}}</h4>
+        <input type="submit" class="w3-button w3-red" value="delete">
+    </form>
+    {%elif log_sess['user_id']%}
+    <p>You are not allowed for this operation</p>
+{%else%}
+    <p>Login to delete model</p>
+{% endif %}
+{% endblock %}

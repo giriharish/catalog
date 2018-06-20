@@ -1,0 +1,15 @@
+{% extends "head.html" %}
+ {% block content %}
+ <a href="/"class="w3-button w3-transparent w3-left"><i class="fa fa-arrow-left"></i></a>
+ {% if log_sess['user_id'] == comp.user_id %}
+    <form class="w3-container" style="width:30%" action="{{url_for("editCompany",c_id=comp.id)}}" method="post">
+        <label for="">Model Name</label>
+        <input type="text" name="cname" class="w3-input w3-border" width="30px" id="" value="{{comp.name}}" required>
+        <input type="submit" class="w3-button w3-green w3-right" value="Rename">
+    </form>
+    {%elif log_sess['user_id']%}
+    <p>You are not allowed for this operation</p>
+{%else%}
+    <p>Login to edit</p>
+{% endif %}
+{% endblock %}
